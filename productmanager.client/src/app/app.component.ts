@@ -7,11 +7,11 @@ interface WeatherForecast {
   summary: string;
 }
 interface Order {
-  //int Id { get; set; }
-  //      public DateTime OrderDate { get; set; }
-  //      public int OrderNumber { get; set; }
-  //      public decimal ? TotalAmount { get; set; }
-  //      public ICollection < OrderItem > OrderItems { get; set; }
+  id: number;
+  orderDate: Date;
+  orderNumber: string;
+  totalAmount?: number;
+  orderItem: string;
 }
 @Component({
   selector: 'app-root',
@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getForecasts();
+    // this.getForecasts();
+    this.getOrders();
   }
 
   getForecasts() {
@@ -37,6 +38,14 @@ export class AppComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  getOrders() {
+    this.http.get<Order[]>('https://localhost:7213/api/Order').subscribe(data => {
+      this.orders = data;
+    }, error => {
+      console.error("Greska prilikom dohvatanja podataka", error);
+    });
   }
 
   title = 'productmanager.client';
