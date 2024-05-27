@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ProductManager.Server.Data;
+using ProductManager.Server.Mappers;
+using ProductManager.Server.Models.Domain;
+using ProductManager.Server.Repositories;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +22,10 @@ builder.Services.AddCors(options => options.AddPolicy(name: "FrontUI", policy =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IOrderRepository, SQLOrderRepository>();
+
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 
 var app = builder.Build();
 
