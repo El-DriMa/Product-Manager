@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProductManager.Server.Models;
+namespace ProductManager.Server.Models.Domain;
 
 public partial class Order
 {

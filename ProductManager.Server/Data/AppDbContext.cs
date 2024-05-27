@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using ProductManager.Server.Models;
+using ProductManager.Server.Models.Domain;
 
 namespace ProductManager.Server.Data;
 
