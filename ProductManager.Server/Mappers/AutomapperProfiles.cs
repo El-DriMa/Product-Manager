@@ -12,6 +12,7 @@ namespace ProductManager.Server.Mappers
         public AutomapperProfiles()
         {
             CreateMap<Order, OrderDTO>().ReverseMap();
+            CreateMap<Product, ProductDTO>().ReverseMap();
         }
     }
 }

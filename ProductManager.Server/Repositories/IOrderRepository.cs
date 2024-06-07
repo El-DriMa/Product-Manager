@@ -7,6 +7,6 @@ namespace ProductManager.Server.Repositories
 {
     public interface IOrderRepository
     {
-        Task<List<Order>> GetAllOrdersAsync();
+        Task<List<Order>> GetAllOrdersAsync();        
     }
 }
