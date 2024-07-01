@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.product {
+  width: calc(33% - 10px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:initial;
+  margin: 4px;
+  background-color:aliceblue 
+}

@@ -1,4 +1,4 @@
-<table>
+<!--<table>
   <thead>
     <tr>
       <th>Product name</th>
@@ -13,4 +13,12 @@
       <td>{{product.package}}</td>
     </tr>
   </tbody>
-</table>
+</table>-->
+<div class="container">
+   <div class="product" *ngFor="let product of products">
+    <h2>{{product.productName}}</h2>
+    <h3>Price: {{product.unitPrice}}$</h3>
+    <p>Package: {{product.package}}</p>
+  </div>
+</div>
+
