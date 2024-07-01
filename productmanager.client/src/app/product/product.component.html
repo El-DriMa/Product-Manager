@@ -1,1 +1,16 @@
-<p>product works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Product name</th>
+      <th>Price</th>
+      <td>Package</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.productName}}</td>
+      <td>{{product.unitPrice}}</td>
+      <td>{{product.package}}</td>
+    </tr>
+  </tbody>
+</table>
