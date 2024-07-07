@@ -1,23 +1,10 @@
-<!--<h1>All Orders : </h1>
-<table>
-  <thead>
-    <tr>
-      <th>Order Number</th>
-      <th>Order Date </th>
-      <th>Total Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of orders">
-      <td>{{order.orderNumber}}</td>
-      <td>{{order.orderDate}}</td>
-      <td>{{order.totalAmount}}</td>
-    </tr>
-  </tbody>
-</table>-->
+<!--Main-->
+<main class="container mt-4">
+  <router-outlet></router-outlet>
+</main>
 
-
-<nav>
-<a routerLink="/product">Proizvodi</a>
-</nav>
-<router-outlet></router-outlet>
+<footer class="footer mt-4">
+  <div class="container text-center">
+    <span class="text-muted">© 2024 Product Manager. All rights reserved.</span>
+  </div>
+</footer>

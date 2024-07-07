@@ -1,0 +1,31 @@
+/* styles.css ili odgovarajući CSS fajl */
+.home-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.home-nav {
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  padding: 10px;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+
+  .nav-link:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+
+router-outlet {
+  margin-top: 20px;
+}
