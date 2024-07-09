@@ -1,10 +1,10 @@
-﻿using ProductManager.Server.Models.Domain;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProductManager.Server.Models.DTO
 {
-    public class ProductDTO
+    public class CreateProductDTO
     {
-        public int Id { get; set; }
+       // public int Id { get; set; }
 
         public string ProductName { get; set; } = null!;
 
@@ -13,5 +13,8 @@ namespace ProductManager.Server.Models.DTO
         public string? Package { get; set; }
 
         public bool? IsDiscontinued { get; set; }
+
+        [Range(1, 29, ErrorMessage = "SupplierId has to be between 1 and 29.")]
+        public int SupplierId { get; set; }
     }
 }

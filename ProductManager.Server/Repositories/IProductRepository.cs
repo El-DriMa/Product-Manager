@@ -6,6 +6,8 @@ namespace ProductManager.Server.Repositories
     public interface IProductRepository 
     {
         Task<List<Product>> GetAllProductsAsync();
-        Task<List<Product?>> GetByIdAsync(int Id);
+        Task<Product?> GetByIdAsync(int Id);
+        Task<Product> CreateAsync(Product product);
+
     }
 }

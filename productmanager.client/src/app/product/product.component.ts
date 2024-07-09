@@ -31,6 +31,9 @@ export class ProductComponent implements OnInit{
     );
   }
 
+  private add = 'https://localhost:7213/api/Product/Create';
+
+
 
 
 }

@@ -13,6 +13,7 @@ namespace ProductManager.Server.Mappers
         {
             CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<Product, ProductDTO>().ReverseMap();
+            CreateMap<Product, CreateProductDTO>().ReverseMap();
         }
     }
 }

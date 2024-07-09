@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductManager.Server;
 using ProductManager.Server.Data;
+using ProductManager.Server.Models.Domain;
 using ProductManager.Server.Models.DTO;
 using ProductManager.Server.Repositories;
 
@@ -35,7 +36,18 @@ namespace ProductManager.Server.Controllers
         {
             var productDomain = await productRepository.GetByIdAsync(Id);
             if (productDomain == null) return NotFound();
-            return Ok(mapper.Map<List<ProductDTO>>(productDomain));
+            return Ok(mapper.Map<ProductDTO>(productDomain));
+        }
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<IActionResult> Create([FromBody] CreateProductDTO createPsroductDTO)
+        {
+            var model = mapper.Map<Product>(createPsroductDTO);
+            model = await productRepository.CreateAsync(model);
+            var dto = mapper.Map<CreateProductDTO>(model);
+
+            return CreatedAtAction(nameof(GetById), new {Id=model.Id}, dto);
         }
     }
 }

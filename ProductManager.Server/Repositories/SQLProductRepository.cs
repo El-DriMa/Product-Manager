@@ -14,14 +14,22 @@ namespace ProductManager.Server.Repositories
         {
             this.dbContext = dbContext;
         }
+
+
         public async Task<List<Product>> GetAllProductsAsync()
         {
             return await dbContext.Products.ToListAsync();
         }
 
-        public async Task<List<Product>> GetByIdAsync(int Id)
+        public async Task<Product?> GetByIdAsync(int Id)
         {
-            return await dbContext.Products.Where(x => x.Id == Id).ToListAsync();
+            return await dbContext.Products.FirstOrDefaultAsync(x => x.Id == Id);
+        }
+        public async Task<Product> CreateAsync(Product product)
+        {
+            await dbContext.Products.AddAsync(product);
+            await dbContext.SaveChangesAsync();
+            return product;
         }
     }
 }
