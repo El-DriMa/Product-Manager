@@ -9,7 +9,7 @@ Welcome to the Product Manager Application! This project is aimed at providing a
 - Update Product: Modify existing product information.
 - Delete Product: Remove products from the database.
 
-### The application currently supports the Read operation to display a list of products.
+### The application currently supports the Read and Create operations to display a list of products and create new products.
 
 
 ## Technologies Used
