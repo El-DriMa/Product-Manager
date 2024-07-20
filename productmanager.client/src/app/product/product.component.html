@@ -1,10 +1,12 @@
   <div class="container">
     <h1>Product Management</h1>
     <div class="form-container">
-      <form id="product-form">
-        <input type="text" id="product-name" placeholder="Product Name" required>
-        <input type="number" id="product-price" placeholder="Product Price" required>
-        <input type="text" id="product-description" placeholder="Product Description">
+      <form id="product-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <input type="text" [(ngModel)]="newProduct.productName" id="product-name" placeholder="Product Name" required name="productName">
+        <input type="text" [(ngModel)]="newProduct.unitPrice" id="product-price" placeholder="Product Price" required name="unitPrice">
+        <input type="text" [(ngModel)]="newProduct.package" id="product-description" placeholder="Product Description" name="package">
+        <input type="number" [(ngModel)]="newProduct.supplierId" id="product-supplier" placeholder="Product Supplier (1-29)" name="supplierId">
+        <input type="checkbox" [(ngModel)]="newProduct.isDiscontinued" id="product-discontinued" placeholder="Discontinued" name="isDiscontinued"> Discontinued
         <button type="submit">Add Product</button>
       </form>
     </div>
@@ -24,7 +26,7 @@
             <td>{{product.productName}}</td>
             <td>{{product.unitPrice}}$</td>
             <td>{{product.package}}</td>
-            <td>{{product.isDiscontinued? 'YES':'NO'}}</td>
+            <td>{{product.isDiscontinued?'Not Available':'Available'}}</td>
             </tr>
         </tbody>
       </table>
