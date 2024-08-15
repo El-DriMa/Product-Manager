@@ -3,6 +3,8 @@ using ProductManager.Server.Data;
 using ProductManager.Server.Repositories;
 using Microsoft.EntityFrameworkCore;
 using ProductManager.Server.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ProductManager.Server.Repositories
 {
@@ -30,6 +32,23 @@ namespace ProductManager.Server.Repositories
             await dbContext.Products.AddAsync(product);
             await dbContext.SaveChangesAsync();
             return product;
+        }
+
+        public async Task UpdateAsync(Product product)
+        {
+            dbContext.Products.Update(product);
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task Delete(int Id)
+        {
+            var product = await dbContext.Products.FirstOrDefaultAsync(x => x.Id == Id);
+            if (product != null)
+            {
+                dbContext.Products.Remove(product);
+                await dbContext.SaveChangesAsync();
+            }
+
         }
     }
 }

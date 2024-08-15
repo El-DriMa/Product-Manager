@@ -8,6 +8,8 @@ namespace ProductManager.Server.Repositories
         Task<List<Product>> GetAllProductsAsync();
         Task<Product?> GetByIdAsync(int Id);
         Task<Product> CreateAsync(Product product);
+        Task UpdateAsync(Product product);
+        Task Delete(int Id);
 
     }
 }
