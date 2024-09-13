@@ -57,10 +57,12 @@ namespace ProductManager.Server.Controllers
         {
             var product = await productRepository.GetByIdAsync(updateProductDTO.Id);
 
+            if (product == null) return NotFound();
+      
             if(updateProductDTO.ProductName != null) product.ProductName = updateProductDTO.ProductName;
             if(updateProductDTO.UnitPrice!=null) product.UnitPrice = updateProductDTO.UnitPrice;
             if(updateProductDTO.Package!=null) product.Package= updateProductDTO.Package;
-            if(updateProductDTO.SupplierId!=null) product.SupplierId = updateProductDTO.SupplierId;
+            product.SupplierId = updateProductDTO.SupplierId;
 
             await productRepository.UpdateAsync(product);
             return Ok(new { Message = "Data edited successfully" });

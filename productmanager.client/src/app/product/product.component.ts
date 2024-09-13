@@ -16,10 +16,11 @@ interface Product {
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit {
 
   public products: Product[] = [];
   public newProduct: Product = {} as Product;
+  public isEditMode: boolean = false; 
 
   constructor(private http: HttpClient) { }
 
@@ -35,8 +36,11 @@ export class ProductComponent implements OnInit{
   }
 
   onSubmit(f: NgForm) {
-    this.createProduct(this.newProduct);
-    console.log(f.name);
+    if (this.isEditMode) {
+      this.updateProduct(this.newProduct);
+    } else {
+      this.createProduct(this.newProduct);
+    }
     this.resetForm(f);
   };
 
@@ -50,6 +54,28 @@ export class ProductComponent implements OnInit{
     })
   }
 
+  updateProduct(data: any) {
+    return this.http.put<Product>(`https://localhost:7213/api/Product/Update`, data).subscribe(
+      response => {
+        console.log("Successfully updated product!", response);
+        this.getProducts();
+      },
+      error => {
+        console.log("Error occurred", error);
+      }
+    );
+  }
+
+  loadProductDetails(data: number) {
+    this.http.get<Product>(`https://localhost:7213/api/Product/${data}`).subscribe(data => {
+      this.newProduct = data;
+      this.isEditMode = true;
+    }, error => {
+      console.log("Greska pri dohvatanju podataka.", error);
+    });
+  }
+
+
   resetForm(form: NgForm) {
     form.resetForm();
     this.newProduct = {
@@ -60,6 +86,7 @@ export class ProductComponent implements OnInit{
       isDiscontinued: false,
       supplierId: 0
     };
+    this.isEditMode = false; 
   }
 
 
